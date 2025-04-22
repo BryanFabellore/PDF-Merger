@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import subprocess
 
 def show_log_details(event):
     selected_index = logs_listbox.curselection()
@@ -9,11 +10,12 @@ def show_log_details(event):
         output_label.config(text=f"Output File:\n{selected_log.replace('Log Entry', 'merged_output')}.pdf")
 
 def show_merge_page():
-    main_frame.grid_forget()
-    merge_frame.grid(row=0, column=0, sticky="nsew")
-    copyright_label.grid(
-        row=1, column=0, columnspan=2, pady=(10, 5), sticky="sew"
-    )
+    # Open the second UI (main_ui.py)
+    subprocess.Popen([r"python", r"D:\Projects\Python\PDF Merger\PDF-Merger\PDF-Merger\src\ui\main_ui.py"])
+    # Optionally hide the current window (menu_ui.py)
+    root.withdraw()
+
+
 
 def go_back():
     merge_frame.grid_forget()
